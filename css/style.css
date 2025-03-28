@@ -1,0 +1,174 @@
+
+
+/* 紫色滚动导航栏 */
+.scrolling-navbar {
+    width: 100%;
+    background-color: rgb(230, 189, 230);
+    padding: 6px 0;
+    overflow: hidden;
+    /* 隐藏元素超出容器的部分 */
+    position: relative;
+}
+
+/* 滚动的文字*/
+.nav-content {
+    display: inline-block;
+    /* 强制所有内容保持在一行显示 */
+    white-space: nowrap;
+    /* 这是CSS动画的简写属性，包含四个参数：
+    参数	    值	        作用
+    动画名称	scroll	    指定使用的关键帧动画（需配合 @keyframes 定义）
+    持续时间	20s	        完成一次动画需要20秒
+    速度曲线	linear	    匀速运动（可选：ease/ease-in/ease-out 等）
+    重复次数	infinite	无限循环播放 */
+    animation: scroll 30s linear infinite;
+    padding-right: 100vw;
+}
+
+/* 滚动动画 */
+@keyframes scroll {
+    /* 初始位置：不偏移 */
+    0% { transform: translateX(0);}
+    /* 结束位置：向左移动10%宽度 */
+    100% {transform: translate(-25%);}
+}
+
+/* 文字 */
+.nav-item {
+    display: inline-block;
+    padding: 0 10px;
+    color: black;
+    text-decoration: none !important;  /* 强制去除下划线 */
+}
+
+/* 文字间距 */
+.text-gap {
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+}
+
+/* 悬停暂停 */
+.nav-content:hover {
+    animation-play-state: paused;
+}
+
+/* 悬停时文字变亮变大 */
+.nav-item:hover {
+    color: gray !important;
+    transform: scale(1.05);
+}
+
+
+/* 导航栏容器 */
+.navbar {
+    position: fixed; /* 固定定位 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 1000;
+    transition: all 0.3s ease; /* 背景色过渡动画 */
+}
+
+
+
+/* Logo样式 */
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* 空隙 */
+.DT-gap {
+    display: inline-block;
+    width: 60px;
+}
+
+.login {
+    text-decoration: none !important;
+    font-size: medium; 
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: black;
+}
+
+.register {
+    text-decoration: none !important;
+    font-size: medium; 
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: black;
+}
+
+/* 按钮 */
+.butn {
+    background: transparent;
+    border: #000;
+    cursor: pointer;/* 鼠标悬停时显示手型 */
+    color: #000;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    display: block;
+}
+
+/* 容器设置 */
+.carousel-container {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    aspect-ratio: 16/12; /* 强制容器比例（按需调整） */
+}
+
+/* 轮播轨道 */
+.carousel {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease;
+}
+
+/* 单张幻灯片 */
+.slide {
+    min-width: 100%;
+    position: relative; /* 确保文字能定位 */
+}
+
+/* 图片样式（等比例缩放的关键） */
+.slide img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* 等比例填充并裁剪 */
+    display: block;
+}
+
+.slide-text {
+    line-height: 0.6;
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    color: black;
+    z-index: 2; /* 控制元素上下叠层 */
+    text-align: left;
+}
+
+.learnmorebutton {
+    background-color: black;
+    font-size:large;
+    padding: 10px 20px;
+    cursor: pointer;
+    /* 把鼠标变成一只手 */
+    border-radius: 30px;
+    /* 把边框变得圆润 */
+}
+
+.slidebutton {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
