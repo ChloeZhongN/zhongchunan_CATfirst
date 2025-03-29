@@ -1,4 +1,9 @@
-
+/* 基础样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 /* 紫色滚动导航栏 */
 .scrolling-navbar {
@@ -104,9 +109,9 @@
 /* 按钮 */
 .butn {
     background: transparent;
-    border: #000;
+    border:#f9f8f8;
     cursor: pointer;/* 鼠标悬停时显示手型 */
-    color: #000;
+    color: #faf9f9;
     transition: all 0.2s;
     display: flex;
     align-items: center;
@@ -121,7 +126,8 @@
     max-width: 100%;
     margin: 0 auto;
     overflow: hidden;
-    aspect-ratio: 16/12; /* 强制容器比例（按需调整） */
+    aspect-ratio: 16/12; 
+    /* 强制容器比例（按需调整） */
 }
 
 /* 轮播轨道 */
@@ -140,23 +146,34 @@
 /* 图片样式（等比例缩放的关键） */
 .slide img {
     width: 100%;
-    height: auto;
+    height: 1000px;
     object-fit: cover; /* 等比例填充并裁剪 */
     display: block;
 }
 
 .slide-text {
-    line-height: 0.6;
+    line-height: 1.5;
     position: absolute;
-    top: 50%;
-    left: 30%;
+    top: 60%;
+    left: 35%;
     transform: translate(-50%, -50%);
     color: black;
     z-index: 2; /* 控制元素上下叠层 */
     text-align: left;
 }
 
-.learnmorebutton {
+.slide-text-second {
+    line-height: 1.5;
+    position: absolute;
+    top: 60%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    color: white;
+    z-index: 2; /* 控制元素上下叠层 */
+    text-align: left;
+}
+
+.slidebutton {
     background-color: black;
     font-size:large;
     padding: 10px 20px;
@@ -166,9 +183,289 @@
     /* 把边框变得圆润 */
 }
 
-.slidebutton {
+.slidebutton-second {
+    background-color: white;
+    font-size:large;
+    padding: 10px 20px;
+    cursor: pointer;
+    /* 把鼠标变成一只手 */
+    border-radius: 30px;
+    /* 把边框变得圆润 */
+}
+
+.slidebutton-text {
     color: white;
     text-decoration: none;
     font-weight: 600;
 }
 
+.slidebutton-text-second {
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* 导航按钮 */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 60px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s;
+}
+
+/* 伪类选择器，创建交互效果，鼠标悬停颜色变深 */
+.carousel-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+
+.prev-btn {
+    left: 20px;
+}
+
+.next-btn {
+    right: 20px;
+}
+
+.viewall {
+    margin-left: 30px;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: larger;
+}
+
+/* 轮播容器 */
+.pic-shoubox {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-left: 30px;
+}
+
+/* 图片列表 */
+.pic-list {
+    display: flex;
+    transition: transform 0.5s ease;
+    height: 500px;
+}
+
+/* 单张图片+文字项 */
+.pic-item {
+    width: 40%;
+    position: relative;
+    padding: 30px;
+}
+
+/* 图片容器 -控制图片显示区域大小*/
+.pic-wrapper {
+    position: relative;
+    height: 70%;
+    /* 图片占据轮播框80%高度 */
+    width: 250px;
+}
+
+/* 图片本身——填充方式 */
+.pic-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 悬停信息 */
+.pic-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);/*黑色70%透明*/
+    color: white;
+    padding: 30px;
+    opacity: 0;/* 默认透明隐藏 */
+    transition: opacity 0.3s;/*淡入动画*/
+}
+
+.pic-wrapper:hover .pic-info {
+    opacity: 1;/*悬停显示*/
+}
+
+/* 图片标题 */
+.pic-caption {
+    height: 20%;
+    padding: 20px;
+    background: white;
+    transition: background 0.3s;
+}
+
+.pic-caption:hover {
+    background: #f8f8f8;
+}
+
+.pic-caption a {
+    font-size: 0.9rem;
+    color: #666;
+    text-decoration: none;
+}
+
+.middle-text {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: 100px;
+}
+
+.about {
+    margin-left: 41%;
+    color: black;
+}
+
+/* 基础样式 */
+.slide-third {
+    position: relative;
+    width: 100%;
+    height: 55vh;
+    overflow: hidden;
+}
+
+/* 背景图片 */
+.samephoto {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.samephoto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: brightness(0.8);
+}
+
+/* 文字内容容器 */
+.thr-text {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    color: white;
+    opacity: 0;
+    z-index: 2;
+}
+
+
+.blackbox {
+    display: inline-block;
+    background-color: black;
+    color: white;
+    padding: 8px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-top: 1px;
+    border-radius: 3px;
+}
+
+.bbtext {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    padding: 15px;
+}
+
+/* 小圆点 */
+.dots {
+    position: absolute;
+    bottom: 8%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 3;
+}
+
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 8px;
+    border-radius: 50%;
+    background-color: #666;
+}
+
+/* 修改后的核心动画 */
+@keyframes text-show {
+    0%, 19% { opacity: 0; }   /* 隐藏 */
+    20%, 39% { opacity: 1; }  /* 显示5秒 (20%-39% of 25s) */
+    40%, 100% { opacity: 0; } /* 隐藏 */
+}
+
+@keyframes dot-active {
+    0%, 20% { background: #666; }  /* 灰色 */
+    20.1%, 25% { background: white; } /* 白色 */
+    25.1%, 100% { background: #666; } /* 恢复灰色 */
+}
+
+/* 修正动画分配（严格5秒间隔） */
+.thr-text:nth-child(1) { animation: text-show 25s infinite 0s; }
+.thr-text:nth-child(2) { animation: text-show 25s infinite 5s; }
+.thr-text:nth-child(3) { animation: text-show 25s infinite 10s; }
+.thr-text:nth-child(4) { animation: text-show 25s infinite 15s; }
+.thr-text:nth-child(5) { animation: text-show 25s infinite 20s; }
+
+.dot:nth-child(1) { animation: dot-active 25s infinite 0s; }
+.dot:nth-child(2) { animation: dot-active 25s infinite 5s; }
+.dot:nth-child(3) { animation: dot-active 25s infinite 10s; }
+.dot:nth-child(4) { animation: dot-active 25s infinite 15s; }
+.dot:nth-child(5) { animation: dot-active 25s infinite 20s; }
+
+.articles.track {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-left: 30px;
+}
+
+/* 图片列表 保证两个box是横向排列的*/
+.articles-list {
+    display: flex;
+    transition: transform 0.5s ease;
+    height: 400px;
+}
+
+.articles-box {
+    width: 100%;
+    position: relative;
+    padding: 30px;
+}
+
+.articles-pic {
+    position: relative;
+    height: 50%;
+    width:95% ;
+}
+
+.articles-pic img {
+    width: 80%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
