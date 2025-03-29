@@ -406,33 +406,18 @@
     margin: 0 8px;
     border-radius: 50%;
     background-color: #666;
+    transition: all 0.3s;
 }
 
-/* 修改后的核心动画 */
-@keyframes text-show {
-    0%, 19% { opacity: 0; }   /* 隐藏 */
-    20%, 39% { opacity: 1; }  /* 显示5秒 (20%-39% of 25s) */
-    40%, 100% { opacity: 0; } /* 隐藏 */
+/* 当 .thr-text 有 .active 类时显示 */
+.thr-text.active {
+    opacity: 1;
 }
-
-@keyframes dot-active {
-    0%, 20% { background: #666; }  /* 灰色 */
-    20.1%, 25% { background: white; } /* 白色 */
-    25.1%, 100% { background: #666; } /* 恢复灰色 */
+/* 当 .dot 有 .active 类时变白并放大 */
+.dot.active {
+    background: white;
+    transform: scale(1.2);
 }
-
-/* 修正动画分配（严格5秒间隔） */
-.thr-text:nth-child(1) { animation: text-show 25s infinite 0s; }
-.thr-text:nth-child(2) { animation: text-show 25s infinite 5s; }
-.thr-text:nth-child(3) { animation: text-show 25s infinite 10s; }
-.thr-text:nth-child(4) { animation: text-show 25s infinite 15s; }
-.thr-text:nth-child(5) { animation: text-show 25s infinite 20s; }
-
-.dot:nth-child(1) { animation: dot-active 25s infinite 0s; }
-.dot:nth-child(2) { animation: dot-active 25s infinite 5s; }
-.dot:nth-child(3) { animation: dot-active 25s infinite 10s; }
-.dot:nth-child(4) { animation: dot-active 25s infinite 15s; }
-.dot:nth-child(5) { animation: dot-active 25s infinite 20s; }
 
 .articles.track {
     max-width: 100%;

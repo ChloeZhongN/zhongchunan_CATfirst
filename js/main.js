@@ -151,3 +151,32 @@ document.addEventListener('DOMContentLoaded', function() {
     updateCarousel();
     startAutoPlay();
 });
+//第三次轮播
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.thr-text');
+    const dots = document.querySelectorAll('.dot');
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+    
+    // 初始化显示第一张
+    showSlide(0);
+    
+    // 自动轮播
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        showSlide(currentIndex);
+    }, 5000); // 5秒切换
+    
+    function showSlide(index) {
+        // 隐藏所有幻灯片
+        slides.forEach(slide => slide.classList.remove('active'));
+        //遍历所有轮播项（slides）和圆点（dots），移除它们的 active 类。
+        dots.forEach(dot => dot.classList.remove('active'));
+
+        // 显示当前幻灯片
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        //给当前轮播项（slides[index]）和对应圆点（dots[index]）添加 active 类。
+
+    }
+});
