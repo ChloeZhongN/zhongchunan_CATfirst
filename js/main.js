@@ -180,3 +180,80 @@ document.addEventListener('DOMContentLoaded', function() {
 
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // 获取轮播元素
+    const picShoubox = document.querySelector('.pic-shoubox-2');
+    const picList = picShoubox.querySelector('.pic-list-2');
+    const picItems = picShoubox.querySelectorAll('.pic-item');
+    const prevBtn = picShoubox.querySelector('.prev-btn');
+    const nextBtn = picShoubox.querySelector('.next-btn');
+    
+    // 轮播状态
+    let currentIndex = 0;
+    let autoPlayInterval;
+    const intervalTime = 10000;
+    
+    // 更新轮播位置
+    function updateCarousel() {
+        //每个pic-item宽度为40%
+        picList.style.transform = `translateX(-${currentIndex * 40}%)`;
+    }
+    
+    // 下一张
+    function nextSlide() {
+        // 计算可显示的项目数（100%/40%=2.5，取整为2）
+        const visibleItems = Math.floor(100 / 40);
+        if (currentIndex + visibleItems < picItems.length) {
+            currentIndex++;
+        } else {
+            currentIndex = 0; // 循环回到第一张
+        }
+        updateCarousel();
+    }
+    
+    // 上一张
+    function prevSlide() {
+        if (currentIndex > 0) {
+            currentIndex--;
+        } else {
+            // 循环到最后
+            //Math.floor() → 向下取整函数，2.5取整后得到2
+            currentIndex = Math.max(picItems.length - Math.floor(100 / 40), 0);
+        }
+        updateCarousel();
+    }
+    
+    // 自动播放
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(nextSlide, intervalTime);
+    }
+    
+    // 停止自动播放
+    function stopAutoPlay() {
+        clearInterval(autoPlayInterval);
+    }
+    
+    // 事件监听
+    if (prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', function() {
+            stopAutoPlay();
+            prevSlide();
+            startAutoPlay();
+        });
+        
+        nextBtn.addEventListener('click', function() {
+            stopAutoPlay();
+            nextSlide();
+            startAutoPlay();
+        });
+    }
+    
+    // 鼠标交互
+    picShoubox.addEventListener('mouseenter', stopAutoPlay);
+    picShoubox.addEventListener('mouseleave', startAutoPlay);
+    
+    // 初始化
+    updateCarousel();
+    startAutoPlay();
+});
